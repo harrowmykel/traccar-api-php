@@ -1,0 +1,24 @@
+{
+    "name": "harrowmykel/traccar-api",
+    "autoload": {
+        "psr-4": {
+            "PiccmaQ\\TraccarApi\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "harrowmykel",
+            "email": "contactpiccmaq@gmail.com"
+        }
+    ],
+    "scripts": {
+        "tests": "./vendor/bin/phpunit --configuration phpunit.xml",
+        "tests_windows": ".\\vendor\\bin\\phpunit --configuration phpunit.xml"
+    },
+    "require": {
+        "guzzlehttp/guzzle": "^7.13"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.6"
+    }
+}
