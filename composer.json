@@ -1,5 +1,5 @@
 {
-    "name": "harrowmykel/traccar-api",
+    "name": "harrowmykel/traccar-api-php",
     "autoload": {
         "psr-4": {
             "PiccmaQ\\TraccarApi\\": "src/"
