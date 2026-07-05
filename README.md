@@ -10,7 +10,7 @@ A PHP client library for the [Traccar](https://www.traccar.org/) GPS tracking pl
 ## Installation
 
 ```bash
-composer require piccmaq/traccar-api
+composer require harrowmykel/traccar-api
 ```
 
 ## Authentication
