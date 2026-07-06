@@ -148,6 +148,30 @@ class TraccarApi
         return $this;
     }
 
+    public function setEmail(string $email): self
+    {
+        $this->email = $email;
+        return $this;
+    }
+
+    public function setPassword(string $password): self
+    {
+        $this->password = $password;
+        return $this;
+    }
+
+    public function setAuthToken(string $token): self
+    {
+        $this->authToken = $token;
+        return $this;
+    }
+
+    public function setAuthMethod(string $method): self
+    {
+        $this->authMethod = $method;
+        return $this;
+    }
+
     /**
      * Retrieve the currently cached or configured authentication token.
      *
