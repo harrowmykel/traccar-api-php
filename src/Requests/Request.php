@@ -23,6 +23,8 @@ abstract class Request
     /** @var bool Whether the response body represents a collection (array) of models. */
     protected bool $isCollection = false;
 
+    protected bool $acceptsJsonHeader = false;
+
     /**
      * @param TraccarApi $api The authenticated API client instance.
      */
@@ -62,6 +64,12 @@ abstract class Request
     public function withModel(string $modelClass, bool $isCollection = false): self
     {
         return $this->expectModel($modelClass, $isCollection);
+    }
+
+    public function acceptsJson(bool $acceptsJson = true): self
+    {
+        $this->acceptsJsonHeader = $acceptsJson;
+        return $this;
     }
 
     /**
@@ -128,8 +136,10 @@ abstract class Request
      */
     protected function executeRequest(string $method, string $path, array $options = []): ApiResponse
     {
+        if ($this->acceptsJsonHeader) {
+            $options['headers']['Accept'] = 'application/json';
+        }
         $response = $this->api->request($method, $path, $options);
-
         return $this->hydrateResponse($response);
     }
 

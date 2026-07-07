@@ -113,4 +113,28 @@ class ReportRequestTest extends TestCase
         $response = $api->reports()->routeDownload('email', ['deviceId' => 1]);
         $this->assertApiResponse($response);
     }
+
+    public function testAcceptHeaderIsSet(): void
+    {
+        $container = [];
+        $history = \GuzzleHttp\Middleware::history($container);
+        $mock = new \GuzzleHttp\Handler\MockHandler([
+            $this->createJsonResponse(200, [['id' => 1, 'deviceId' => 1]]),
+        ]);
+        $stack = \GuzzleHttp\HandlerStack::create($mock);
+        $stack->push($history);
+        $client = new \GuzzleHttp\Client([
+            'handler' => $stack,
+            'http_errors' => false,
+            'exceptions' => false,
+        ]);
+        $api = (new \PiccmaQ\TraccarApi\TraccarApi(['httpClient' => $client, 'baseUrl' => 'https://example.test/api']))->setBaseUrl('https://example.test/api');
+
+        $api->reports()->combined(['deviceId' => 1]);
+
+        $this->assertCount(1, $container);
+        $request = $container[0]['request'];
+        $this->assertSame('application/json', $request->getHeaderLine('Accept'));
+    }
 }
+

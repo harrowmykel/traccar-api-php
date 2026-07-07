@@ -45,7 +45,9 @@ class ReportRequest extends Request
      */
     public function combined(array $query = []): ApiResponse
     {
-        return $this->expectModel(ReportCombinedModel::class, true)->requestGet('/reports/combined', $query);
+        return $this->expectModel(ReportCombinedModel::class, true)
+            ->acceptsJson()
+            ->requestGet('/reports/combined', $query);
     }
 
     /**
@@ -67,7 +69,9 @@ class ReportRequest extends Request
      */
     public function route(array $query = []): ApiResponse
     {
-        return $this->expectModel(PositionModel::class, true)->requestGet('/reports/route', $query);
+        return $this->expectModel(PositionModel::class, true)
+            ->acceptsJson()
+            ->requestGet('/reports/route', $query);
     }
 
     /**
@@ -111,7 +115,9 @@ class ReportRequest extends Request
      */
     public function events(array $query = []): ApiResponse
     {
-        return $this->expectModel(EventModel::class, true)->requestGet('/reports/events', $query);
+        return $this->expectModel(EventModel::class, true)
+            ->acceptsJson()
+            ->requestGet('/reports/events', $query);
     }
 
     /**
@@ -155,7 +161,9 @@ class ReportRequest extends Request
      */
     public function geofences(array $query = []): ApiResponse
     {
-        return $this->expectModel(ReportGeofenceModel::class, true)->requestGet('/reports/geofences', $query);
+        return $this->expectModel(ReportGeofenceModel::class, true)
+            ->acceptsJson()
+            ->requestGet('/reports/geofences', $query);
     }
 
     /**
@@ -179,7 +187,9 @@ class ReportRequest extends Request
      */
     public function summary(array $query = []): ApiResponse
     {
-        return $this->expectModel(ReportSummaryModel::class, true)->requestGet('/reports/summary', $query);
+        return $this->expectModel(ReportSummaryModel::class, true)
+            ->acceptsJson()
+            ->requestGet('/reports/summary', $query);
     }
 
     /**
@@ -221,7 +231,9 @@ class ReportRequest extends Request
      */
     public function trips(array $query = []): ApiResponse
     {
-        return $this->expectModel(ReportTripModel::class, true)->requestGet('/reports/trips', $query);
+        return $this->expectModel(ReportTripModel::class, true)
+            ->acceptsJson()
+            ->requestGet('/reports/trips', $query);
     }
 
     /**
@@ -263,7 +275,9 @@ class ReportRequest extends Request
      */
     public function stops(array $query = []): ApiResponse
     {
-        return $this->expectModel(ReportStopModel::class, true)->requestGet('/reports/stops', $query);
+        return $this->expectModel(ReportStopModel::class, true)
+            ->acceptsJson()
+            ->requestGet('/reports/stops', $query);
     }
 
     /**
@@ -303,3 +317,4 @@ class ReportRequest extends Request
         return $this->requestGet('/reports/devices/' . $type, $query);
     }
 }
+
